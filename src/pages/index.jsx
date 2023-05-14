@@ -41,24 +41,32 @@ const PROJECT_LIST = [
         description: "This is a placeholder project, I haven't added it yet.",
         href: "#",
         img: "https://picsum.photos/200/300.webp",
+        width: 200,
+        height: 300,
     },
     {
         title: "Placeholder2",
         description: "This is a placeholder project, I haven't added it yet.",
         href: "#",
         img: "https://picsum.photos/300/200.webp",
+        width: 300,
+        height: 200,
     },
     {
         title: "Placeholder3",
         description: "This is a placeholder project, I haven't added it yet.",
         href: "#",
         img: "https://picsum.photos/200/200.webp",
+        width: 200,
+        height: 200,
     },
     {
         title: "Placeholder4",
         description: "This is a placeholder project, I haven't added it yet.",
         href: "#",
         img: "https://picsum.photos/300/600.webp",
+        width: 300,
+        height: 600,
     },
 ];
 
@@ -71,7 +79,7 @@ function ProjectCard({ project }) {
                     <span className='text-gray-400'>{project.description}</span>
                 </div>
             </div>
-            <Image className="h-auto max-w-full rounded-lg" fill={true} src={project.img} alt={project.name + " cover photo"} />
+            <Image className="h-auto w-full rounded-lg" width={project.width} height={project.height} src={project.img} alt={project.name + " cover photo"} />
         </div>
     )
 
