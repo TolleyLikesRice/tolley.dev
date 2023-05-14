@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import ScrollSpy from 'react-scrollspy-navigation'
 
 const MENU_LIST = [
+  { text: "About", href: "#about" },
   { text: "Projects", href: "#projects" },
+  { text: "Skills", href: "#skills" },
 ];
 
 const NavItem = React.forwardRef(function NavItem({ text, href }, ref) {
@@ -20,7 +22,7 @@ export default function Navbar({hide}) {
   if (!hide) hidden = " navbar-shown";
 
   return (
-    <div id="navbar" className={`fixed top-0 left-0 right-0 h-14 bg-slate-800/50 backdrop-filter backdrop-blur navbar${hidden}`}>
+    <div id="navbar" className={`fixed z-50 top-0 left-0 right-0 h-14 bg-slate-900/80 backdrop-filter backdrop-blur navbar${hidden}`}>
       <div className="h-full flex items-center justify-center space-x-4">
         <ScrollSpy duration={100}  offsetTop={150} className="navItem-active">
           {MENU_LIST.map((item) => (
