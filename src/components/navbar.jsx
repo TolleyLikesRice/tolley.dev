@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import ScrollSpy from 'react-scrollspy-navigation'
 
 const MENU_LIST = [
   { text: "About", href: "#about" },
@@ -24,11 +23,9 @@ export default function Navbar({hide}) {
   return (
     <div id="navbar" className={`fixed z-50 top-0 left-0 right-0 h-14 bg-slate-900/80 backdrop-filter backdrop-blur navbar${hidden}`}>
       <div className="h-full flex items-center justify-center space-x-4">
-        <ScrollSpy duration={100}  offsetTop={150} className="navItem-active">
           {MENU_LIST.map((item) => (
             <NavItem key={item.text} text={item.text} href={item.href} ref={React.createRef()} />
           ))}
-        </ScrollSpy>
       </div>
       {/* <div className="h-full fixed top-0 right-10 flex items-center justify-around">
         {SOCIAL_LIST.map((item) => (
