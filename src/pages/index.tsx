@@ -15,30 +15,91 @@ import styles from '@/styles/index.module.css';
 
 import chatbotCover from '../../public/img/projects/chatbot.png';
 import nezzCover from '../../public/img/projects/nezz.png';
-import placeholderCover from '../../public/img/projects/placeholder.jpg';
-//import websiteCover from '../../public/img/projects/website.png';
+import placeholderCover from '../../public/img/projects/placeholder.webp';
+import websiteCover from '../../public/img/projects/website.png';
 
 const PROJECT_LIST = [
     {
-        title: "My Website",
-        description: "This website! Made with Next.js, Tailwind CSS, and a few other things.",
+        title: "FlyDiary",
+        description: "A work-in-progress digital logbook solution, since I didn't really like anything else already out there.",
         href: "#",
         img: placeholderCover,
-        links: [SocialLink({ src: '/img/socials-row/github.svg', alt: 'GitHub', href: '/' })]
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/FlyDiary' }]
+    },
+    {
+        title: "My Website",
+        description: "This website! Made entry into Next.js, Tailwind CSS, and a few other things.",
+        href: "#",
+        img: placeholderCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/tolley.dev' }]
     },
     {
         title: "Nezz",
         description: "The spiritual successor to ChatBot - an open-source Discord bot, with utility, fun, and a few other commands.",
         href: "#",
         img: nezzCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/Nezz' }]
+    },
+    {
+        title: "PhasmoHelper",
+        description: "A simple website to help identify ghosts in Phasmophobia, made with plain HTML and JS, using water.css. Went outdated pretty quick with new game updates, and the features of it now built into the game.",
+        href: "#",
+        img: placeholderCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/PhasmoHelper' }]
+    },
+    {
+        title: "KTANEHelper",
+        description: "A little helper for Keep Talking and Nobody Explodes, never finished, only had a helper for the \"Memory\" module. Made with plain HTML and JS, using water.css.",
+        href: "#",
+        img: placeholderCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/KTANEHelper' }]
+    },
+    {
+        title: "Just Another Report Plugin",
+        description: "A simple report plugin for Minecraft servers, main standout feature being use of GUI, and sending all reports to a discord webhook",
+        href: "#",
+        img: placeholderCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/JustAnotherReportPlugin' }]
+    },
+    {
+        title: "Just Another Ban Plugin",
+        description: "A snazzy ban plugin for my Minecraft server, never actually got finished, and the server died pretty quick.",
+        href: "#",
+        img: placeholderCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/JustAnotherBanPlugin' }]
+    },
+    {
+        title: "SpammyMcSpamFace",
+        description: "A really dumb SMS spammer written for Android in Kotlin - a proof of concept more than anything.",
+        href: "#",
+        img: placeholderCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/SpammyMcSpamFace' }]
     },
     {
         title: "ChatBot",
         description: "My first ever Node.js project, a simple bot for Discord, written using Discord.js",
         href: "#",
         img: chatbotCover,
+        links: [{ src: '/img/socials-row/github-light.png', alt: 'GitHub', href: 'https://github.com/TolleyLikesRice/ChatBot' }] 
     },
 ];
+
+function ProjectLinks({ links }) {
+    if (links !== undefined) {
+        return (
+            <div>
+                <br />
+                <div className='flex items-center justify-center'>
+                    {links.map((item) => (
+                        <SocialLink key={item.alt} src={item.src} alt={item.alt} href={item.href} />
+                    ))}
+                </div>
+            </div>
+        )
+    } else return (
+        <div></div>
+    );
+}
 
 function ProjectCard({ project }) {
     return (
@@ -47,13 +108,10 @@ function ProjectCard({ project }) {
                 <div className='text-center m-auto p-2'>
                     <h3 className='text-gray-100 text-2xl font-medium'>{project.title}</h3>
                     <span className='text-gray-400'>{project.description}</span>
-                    <br />
-                    <div className='flex items-center justify-center'>
-                        {project.links}
-                    </div>
+                    <ProjectLinks links={project.links} />
                 </div>
             </div>
-            <Image className="h-auto w-full rounded-lg" width={project.width} height={project.height} src={project.img} alt={project.name + " cover photo"} />
+            <Image className="h-auto w-full rounded-lg shadow-xl shadow-slate-400/40" width={project.width} height={project.height} src={project.img} alt={project.name + " cover photo"} />
         </div>
     )
 
