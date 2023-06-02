@@ -122,13 +122,15 @@ export default function IndexPage() {
         <div>
             <Layout>
                 <Head>
-                    <title>Tolley</title>
+                    <title>Hi, I'm Tolley</title>
                 </Head>
                 <Navbar hide={true} />
                 <Script src='/js/index.js' />
                 <div id='firstBitTitleThing' className={`${styles.firstBitTitleThing} flex static w-full justify-center`}>
                     <div className='m-auto'>
                         <br />
+                        { /* eslint-disable-next-line react/no-unescaped-entities */ /* I don't know how to escape this, and I don't care enough to find out */}
+                        <div className='text-left text-lg text-gray-500'>Hi, I'm</div>
                         <h1 className='text-8xl font-medium text-center text-green-600'>Tolley</h1>
                         <br />
                         <div className='flex items-center justify-center'>
