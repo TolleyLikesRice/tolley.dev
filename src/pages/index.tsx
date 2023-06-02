@@ -1,10 +1,10 @@
 import { ArrowDownIcon } from '@heroicons/react/24/solid';
+import { motion } from 'framer-motion';
 import Head from 'next/head'
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
 import React from 'react';
-import Masonry from 'react-masonry-css';
 
 import Footer from '@/components/footer';
 import Layout from '@/components/layout';
@@ -99,9 +99,24 @@ function HighlightLinks({ links }) {
     );
 }
 
-function HighlightCard({ project }) {
+function HighlightCard({ project, number }) {
     return (
-        <div className='relative w-full pb-4 projectCard'>
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: -50,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, delay: 0.1 + (number * 0.1) }
+            }}
+            whileHover={{
+                scale: 1.05,
+            }}
+            viewport={{ once: true }}
+            className='relative w-full pb-4 projectCard m-4'
+        >
             <div className='absolute w-full pb-4 background-blur bg-gray-900/80 projectCardOverlay flex items-center justify-center align-middle'>
                 <div className='text-center m-auto p-2'>
                     <h3 className='text-gray-100 text-2xl font-medium'>{project.title}</h3>
@@ -110,15 +125,27 @@ function HighlightCard({ project }) {
                 </div>
             </div>
             <Image className="h-auto w-full rounded-lg shadow-xl shadow-slate-500/40" width={project.width} height={project.height} src={project.img} alt={project.name + " cover photo"} />
-        </div>
+        </motion.div>
     )
 
 };
 
 function ProjectCard({ project }) {
     return (
-        <div className='w-full mb-4 bg-slate-900 rounded-lg'>
-            <div className='flex flex-row'>
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: -50,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, delay: 0.1 }
+            }}
+            viewport={{ once: true }}
+            className='w-full mb-4 bg-slate-900 rounded-lg'
+        >
+            <div className='flex flex-row max-md:flex-wrap max-md:pb-4'>
                 <Image className='h-24 w-44 object-cover m-4' width={project.width} height={project.height} src={project.img} alt={project.name + " photo"}></Image>
                 <div className='flex items-center h-full my-auto pr-4 pl-4'>
                     <div className='w-full h-full'>
@@ -132,7 +159,7 @@ function ProjectCard({ project }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
@@ -170,25 +197,29 @@ export default function IndexPage() {
                 <div id='about'>
                     <h2 className='text-5xl font-medium text-center text-gray-100'>About Me</h2>
                     <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
+                    <span className='text-white'>text</span>
                 </div>
-                <br /><br /><br /><br /><br /><br /><br />
+             
+                <div id='spacer' className='py-10' />
+                <div id='skills'>
+                    <h2 className='text-5xl font-medium text-center text-gray-100'>Skills</h2>
+                    <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
+                    <span className='text-white'>text</span>
+                </div>
+                <div id='spacer' className='py-10' />
                 <div id='projects'>
                     <h2 className='text-5xl font-medium text-center text-gray-100'>Projects</h2>
                     <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
-                    <h3 className='text-3xl font-medium text-left text-gray-100'>The Highlights</h3>
-                    <hr className='w-64 h-0.5 my-4 !mt-3 border-0 rounded md:my-6 bg-gray-700' />
-                    <Masonry
-                        breakpointCols={{ default: 3, 700: 1 }}
-                        className='masonry-grid'
-                        columnClassName='masonry-grid_column'
-                    >
-                        {HIGHLIGHTS_LIST.map((project) => (
-                            <HighlightCard key={project.title} project={project} />
+                    <h3 className='text-3xl font-medium text-left max-sm:text-center text-gray-100'>The Highlights</h3>
+                    <hr className='w-64 h-0.5 my-4 max-sm:mx-auto !mt-3 border-0 rounded md:my-6 bg-gray-700' />
+                    <div className="w-full flex items-center justify-center max-md:flex-wrap">
+                        {HIGHLIGHTS_LIST.map((project, number) => (
+                            <HighlightCard key={project.title} project={project} number={number} />
                         ))}
-                    </Masonry>
+                    </div>
                     <br /><br />
-                    <h3 className='text-3xl font-medium text-left text-gray-100'>Everything else</h3>
-                    <hr className='w-64 h-0.5 my-4 !mt-3 border-0 rounded md:my-6 bg-gray-700' />
+                    <h3 className='text-3xl font-medium text-left max-sm:text-center text-gray-100'>Everything else</h3>
+                    <hr className='w-64 h-0.5 my-4 !mt-3 border-0 max-sm:mx-auto rounded md:my-6 bg-gray-700' />
                     {
                         PROJECT_LIST.map((project) => (
                             <ProjectCard key={project.title} project={project} />
@@ -196,10 +227,6 @@ export default function IndexPage() {
                     }
                 </div>
                 <div id='spacer' className='py-20' />
-                <div id='skills'>
-                    <h2 className='text-5xl font-medium text-center text-gray-100'>Skills</h2>
-                    <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
-                </div>
                 <div id='filler'>
                     <h2 className='text-5xl font-medium text-center text-gray-100'>Random Fluff to increase page length to test scroll stuff</h2>
                     <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
