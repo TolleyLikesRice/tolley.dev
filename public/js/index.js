@@ -29,13 +29,13 @@ titleDiv = document.getElementById('firstBitTitleThing');
 let oldActive = null;
 window.addEventListener('scroll', function () {
   // Navbar Show/Hide
-  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+/*   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
   if (scrollTop > titleDiv.clientHeight) {
     navbar.classList.add('navbar-shown');
   } else {
     navbar.classList.remove('navbar-shown');
-  }
+  } */
 
   let closestSection;
   let closestDistance;

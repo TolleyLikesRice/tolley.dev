@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { ArrowDownIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import Head from 'next/head'
@@ -82,6 +83,52 @@ const PROJECT_LIST = [
     },
 ];
 
+const SKILLS_LIST = [
+    {
+        title: "TypeScript",
+        icon: "/img/skills/typescript.png",
+    },
+    {
+        title: "JavaScript",
+        icon: "/img/skills/js.png",
+    },
+    {
+        title: "Node.js",
+        icon: "/img/skills/node.png",
+    },
+    {
+        title: "Next.js",
+        icon: "/img/skills/nextjs.svg",
+    },
+    {
+        title: "TailwindCSS",
+        icon: "/img/skills/tailwind.png",
+    },
+    {
+        title: "Kotlin",
+        icon: "/img/skills/kotlin.png",
+    },
+    {
+        title: "Student Pilot",
+        icon: "/img/skills/plane.svg",
+    }
+]
+
+const INTERESTS_LIST = [
+    {
+        title: "Aviation",
+        icon: "/img/skills/plane.svg",
+    },
+    {
+        title: "Music",
+        icon: "/img/skills/music.svg",
+    },
+    {
+        title: "Technical Theatre",
+        icon: "/img/skills/theatre.png",
+    },
+]
+
 function HighlightLinks({ links }) {
     if (links !== undefined) {
         return (
@@ -110,9 +157,6 @@ function HighlightCard({ project, number }) {
                 opacity: 1,
                 y: 0,
                 transition: { duration: 0.5, delay: 0.1 + (number * 0.1) }
-            }}
-            whileHover={{
-                scale: 1.05,
             }}
             viewport={{ once: true }}
             className='relative w-full pb-4 projectCard m-4'
@@ -163,20 +207,39 @@ function ProjectCard({ project }) {
     )
 }
 
+function SkillTag({ skill, number }) {
+    return (
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: -50,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, delay: 0.1 + (number * 0.1) }
+            }}
+            viewport={{ once: true }}
+            className='bg-slate-800 flex p-4 m-2 rounded-md items-center justify-center'
+        >
+            <Image className='h-5 w-5' src={skill.icon} width={256} height={256} alt={`${skill.title} Icon`} />
+            <span className='text-gray-100 text-md ml-2'>{skill.title}</span>
+        </motion.div>
+    )
+}
+
 export default function IndexPage() {
     return (
         <div>
             <Layout>
                 <Head>
-                    { /* eslint-disable-next-line react/no-unescaped-entities */ /* I don't know how to escape this, and I don't care enough to find out */}
                     <title>Hi, I'm Tolley</title>
                 </Head>
-                <Navbar hide={true} />
+                {/* <Navbar hide={true} /> */}
                 <Script src='/js/index.js' />
                 <div id='firstBitTitleThing' className={`${styles.firstBitTitleThing} flex static w-full justify-center`}>
                     <div className='m-auto'>
                         <br />
-                        { /* eslint-disable-next-line react/no-unescaped-entities */ /* I don't know how to escape this, and I don't care enough to find out */}
                         <div className='text-left text-lg text-gray-500'>Hi, I'm</div>
                         <h1 className='text-8xl font-medium text-center text-green-600'>Tolley</h1>
                         <br />
@@ -193,20 +256,42 @@ export default function IndexPage() {
                         </div>
                     </div>
                 </div>
+
                 <div id='spacer' className='py-10' />
+
                 <div id='about'>
                     <h2 className='text-5xl font-medium text-center text-gray-100'>About Me</h2>
                     <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
-                    <span className='text-white'>text</span>
+                    <div className='flex flex-row'>
+                        <div className='w-full px-20' >
+                            <div className='text-gray-200'>
+                                Hi 👋, I'm Tolley!
+                                <br /><br />
+                                I'm a teenager from the UK, who likes to code, and fly planes. I'm always finding new projects, and looking to learn new things. I've been coding for as long as I can remember, and flying for a year now.
+                                <br /><br />
+                                Almost everything I know about coding I've learnt from YouTube, StackOverflow and many hours spent guessing. Usually I prefer doing backend, but recently I've been doing a lot of frontend, and I'm really enjoying it. This website has been my excuse to learn Next.js, and how to make a website look good, and feel responsive with animations.
+                            </div>
+                        </div>
+                        <div className='w-full'>
+                            <h3 className='text-2xl font-medium text-left max-sm:text-center text-gray-100'>Skills</h3>
+                            <div className='flex flex-wrap justify-start items-start'>
+                                {SKILLS_LIST.map((skill, number) => (
+                                    <SkillTag key={skill.title} skill={skill} number={number} />
+                                ))}
+                            </div>
+                            <br />
+                            <h3 className='text-2xl font-medium text-left max-sm:text-center text-gray-100'>Interests</h3>
+                            <div className='flex flex-wrap justify-start items-start'>
+                                {INTERESTS_LIST.map((skill, number) => (
+                                    <SkillTag key={skill.title} skill={skill} number={number} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-             
+
                 <div id='spacer' className='py-10' />
-                <div id='skills'>
-                    <h2 className='text-5xl font-medium text-center text-gray-100'>Skills</h2>
-                    <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
-                    <span className='text-white'>text</span>
-                </div>
-                <div id='spacer' className='py-10' />
+
                 <div id='projects'>
                     <h2 className='text-5xl font-medium text-center text-gray-100'>Projects</h2>
                     <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
