@@ -75,7 +75,7 @@ export default function IndexPage() {
                         <br />
                         <div className='flex items-center justify-center'>
                             {SOCIAL_LIST.map((item) => (
-                                <SocialLink key={item.text} src={item.src} alt={item.alt} href={item.href} />
+                                <SocialLink key={item.alt} src={item.src} alt={item.alt} href={item.href} />
                             ))}
                         </div>
                         <br />

@@ -1,5 +1,6 @@
+import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { Ref, useState } from "react";
 
 const MENU_LIST = [
   { text: "About", href: "#about" },
@@ -7,7 +8,7 @@ const MENU_LIST = [
   { text: "Skills", href: "#skills" },
 ];
 
-const NavItem = React.forwardRef(function NavItem({ text, href }, ref) {
+const NavItem = React.forwardRef(function NavItem({ text, href }: { text: String, href: Url}, ref: Ref<HTMLAnchorElement>) {
   return (
     <Link ref={ref} className="navItem w-auto h-9 rounded-lg flex justify-center /*hover:bg-slate-700/30*/" href={href}>
       <span className="text-gray-300 text-center px-4 m-auto hover:text-white">{text}</span>
