@@ -14,7 +14,7 @@ import { SocialLink } from '@/components/socials';
 import { SOCIAL_LIST } from '@/components/socials';
 import styles from '@/styles/index.module.css';
 
-import chatbotCover from '../../public/img/projects/chatbot.png';
+import chatbotCover from '../../public/img/projects/chatbot.webp';
 import nezzCover from '../../public/img/projects/nezz.png';
 import placeholderCover from '../../public/img/projects/placeholder.webp';
 import placeholder169 from '../../public/img/projects/placeholder-16-9.jpg';
@@ -190,7 +190,7 @@ function ProjectCard({ project }) {
             className='w-full mb-4 bg-slate-900 rounded-lg'
         >
             <div className='flex flex-row max-md:flex-wrap max-md:pb-4'>
-                <Image className='h-24 w-44 object-cover m-4' width={project.width} height={project.height} src={project.img} alt={project.name + " photo"}></Image>
+                <Image className='h-24 w-44 object-cover m-4 rounded-md' width={project.width} height={project.height} src={project.img} alt={project.name + " photo"}></Image>
                 <div className='flex items-center h-full my-auto pr-4 pl-4'>
                     <div className='w-full h-full'>
                         <div className='flex items-center'>
