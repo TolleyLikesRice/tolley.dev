@@ -64,12 +64,6 @@ const PROJECT_LIST = [
         img: placeholder169,
     },
     {
-        title: "Just Another Ban Plugin",
-        description: "A snazzy ban plugin for my Minecraft server, never actually got finished, and the server died pretty quick.",
-        href: "https://github.com/TolleyLikesRice/JustAnotherBanPlugin",
-        img: placeholder169,
-    },
-    {
         title: "SpammyMcSpamFace",
         description: "A really dumb SMS spammer written for Android in Kotlin - a proof of concept more than anything.",
         href: "https://github.com/TolleyLikesRice/SpammyMcSpamFace",
@@ -111,6 +105,10 @@ const SKILLS_LIST = [
     {
         title: "Student Pilot",
         icon: "/img/skills/plane.svg",
+    },
+    {
+        title: "Live Sound",
+        icon: "/img/skills/liveSound.png",
     }
 ]
 
@@ -249,7 +247,7 @@ export default function IndexPage() {
                             ))}
                         </div>
                         <br />
-                        <div className='flex items-center justify-center'>
+                        <div className='flex items-center justify-center max-md:hidden'>
                             <Link ref={React.createRef()} href="#about">
                                 <ArrowDownIcon className='h-6 w-6 fill-gray-200' />
                             </Link>
@@ -262,18 +260,20 @@ export default function IndexPage() {
                 <div id='about'>
                     <h2 className='text-5xl font-medium text-center text-gray-100'>About Me</h2>
                     <hr className='w-64 h-0.5 mx-auto my-4 border-0 rounded md:my-6 bg-gray-700' />
-                    <div className='flex flex-row'>
-                        <div className='w-full px-20' >
+                    <div className='flex flex-row max-md:flex-wrap'>
+                        <div className='w-full md:px-20 md:pt-10 max-md:pt-5' >
                             <div className='text-gray-200'>
                                 Hi 👋, I'm Tolley!
                                 <br /><br />
                                 I'm a teenager from the UK, who likes to code, and fly planes. I'm always finding new projects, and looking to learn new things. I've been coding for as long as I can remember, and flying for a year now.
                                 <br /><br />
-                                Almost everything I know about coding I've learnt from YouTube, StackOverflow and many hours spent guessing. Usually I prefer doing backend, but recently I've been doing a lot of frontend, and I'm really enjoying it. This website has been my excuse to learn Next.js, and how to make a website look good, and feel responsive with animations.
+                                Between flying and coding, I also do a lot of technical theatre work, usually sound or stage management, with my local theatre. I've mixed a few musicals and gigs, and loved every second of it.
+                                <br /><br />
+                                Almost everything I know about coding I've learnt from YouTube, StackOverflow and many hours spent guessing. Usually I'm more of a backend developer, but recently I've been doing a lot of frontend, and I'm really enjoying it. This website has been my excuse to learn Next.js, and how to build a website from the ground up.
                             </div>
                         </div>
                         <div className='w-full'>
-                            <h3 className='text-2xl font-medium text-left max-sm:text-center text-gray-100'>Skills</h3>
+                            <h3 className='text-2xl font-medium text-left max-sm:text-center text-gray-100 pt-5'>Skills</h3>
                             <div className='flex flex-wrap justify-start items-start'>
                                 {SKILLS_LIST.map((skill, number) => (
                                     <SkillTag key={skill.title} skill={skill} number={number} />
@@ -303,13 +303,28 @@ export default function IndexPage() {
                         ))}
                     </div>
                     <br /><br />
-                    <h3 className='text-3xl font-medium text-left max-sm:text-center text-gray-100'>Everything else</h3>
+                    <h3 className='text-3xl font-medium text-left max-sm:text-center text-gray-100'>Honorable Mentions</h3>
                     <hr className='w-64 h-0.5 my-4 !mt-3 border-0 max-sm:mx-auto rounded md:my-6 bg-gray-700' />
                     {
                         PROJECT_LIST.map((project) => (
                             <ProjectCard key={project.title} project={project} />
                         ))
                     }
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            y: -50,
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.5, delay: 0.1 }
+                        }}
+                        viewport={{ once: true }}
+                        className='w-full mb-4 bg-slate-900 rounded-lg flex items-center justify-center p-4'
+                    >
+                        <h3 className='text-gray-100 text-xl text-center'>And a few other bits over my <Link className='underline hover:text-blue-400' href={"https://github.com/TolleyLikesRice"}>GitHub</Link></h3>
+                    </motion.div>
                 </div>
             </Layout>
             <Footer />
