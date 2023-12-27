@@ -5,7 +5,7 @@ import { SOCIAL_LIST } from '@/components/socials';
 
 export default function Footer() {
     return (
-        <footer className="w-screen bg-slate-900 px-10 py-7">
+        <footer className="w-full bg-slate-900 px-10 py-7">
             <div className='flex items-center justify-center'>
                 {SOCIAL_LIST.map((item) => (
                     <SocialLink key={item.alt} src={item.src} alt={item.alt} href={item.href} />
