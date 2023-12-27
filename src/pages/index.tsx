@@ -19,6 +19,7 @@ import nezzCover from "../../public/img/projects/nezz.png";
 import phasmoHelperCover from "../../public/img/projects/phasmoHelper.png";
 import placeholderCover from "../../public/img/projects/placeholder.webp";
 import placeholder169 from "../../public/img/projects/placeholder-16-9.jpg";
+import spammyCover from "../../public/img/projects/spammy.png";
 
 const HIGHLIGHTS_LIST = [
   {
@@ -70,7 +71,7 @@ const PROJECT_LIST = [
     description:
       "A really basic, and morally questionable, SMS spammer written for Android in Kotlin - a proof of concept, and a bit of fun, rather that something malicious.",
     href: "https://github.com/TolleyLikesRice/SpammyMcSpamFace",
-    img: placeholder169,
+    img: spammyCover,
   },
   {
     title: "ChatBot",
