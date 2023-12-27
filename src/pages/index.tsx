@@ -27,20 +27,20 @@ const HIGHLIGHTS_LIST = [
     description: "A modern and responsive driver's hub, built with Next.js, Tailwind CSS and shadcn/ui.",
     href: "#",
     img: placeholderCover,
-    links: [
+/*     links: [
       { src: "/img/lucide/link-2.svg", alt: "Link", href: "https://hub.dulcis.org" },
       { src: "/img/lucide/image.svg", alt: "Photos", href: "#" },
-    ],
+    ], */
   },
   {
     title: "rECG",
     description: "An interactive simulation of the Lifepak15 ECG for FiveM. (Not released yet)",
     href: "#",
     img: placeholderCover,
-    links: [
+    /* links: [
       { src: "/img/lucide/link-2.svg", alt: "Link", href: "https://hub.dulcis.org" },
       { src: "/img/lucide/image.svg", alt: "Photos", href: "#" },
-    ],
+    ], */
   },
   {
     title: "Nezz",
