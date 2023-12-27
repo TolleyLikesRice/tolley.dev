@@ -13,10 +13,11 @@
     "@heroicons/react": "^2.0.18",
     "dummyjs": "^1.1.7",
     "eslint": "8.40.0",
-    "eslint-config-next": "13.4.1",
+    "eslint-config-next": "14.0.4",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "framer-motion": "^10.12.16",
-    "next": "13.4.1",
+    "lucide-react": "^0.300.0",
+    "next": "14.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
